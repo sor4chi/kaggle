@@ -48,5 +48,5 @@ def preprocess_one_hot_encode(train_df: pd.DataFrame, test_df: pd.DataFrame):
     return X, y, test
 
 def preprocess(train_df: pd.DataFrame, test_df: pd.DataFrame):
-    X, y, test = preprocess_one_hot_encode(train_df, test_df)
+    X, y, test = preprocess_mapping(train_df, test_df)
     return X, y, test

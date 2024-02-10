@@ -5,7 +5,8 @@ import seaborn as sns
 import time
 
 import constant as const
-from models.lightgbm_classifier import model as LGBM
+# from models.lightgbm_classifier import model as XGB
+from models.xgboost_classifier import model as XGB
 from processor import preprocess, inverse_map_labels
 
 def main():
@@ -17,13 +18,13 @@ def main():
     X, y, test = preprocess(train_df, test_df)
 
     # Hiperparameter optimization
-    best_params = LGBM.optimize(X, y)
+    best_params = XGB.optimize(X, y)
 
     print('Best hyperparameters:', best_params)
 
     # Create Model
-    config = LGBM.Config(**best_params)
-    model = LGBM.Model(config)
+    config = XGB.Config(**best_params)
+    model = XGB.Model(config)
 
     # Train
     start = time.time()
