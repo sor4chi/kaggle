@@ -32,5 +32,14 @@
     "bagging_temperature": 0.4088205256892874,
     "od_type": "Iter",
     "od_wait": 45
+  },
+  "RandomForest": {
+    "bootstrap": true,
+    "max_depth": 43,
+    "max_features": 0.40275466124121706,
+    "max_leaf_nodes": 648,
+    "n_estimators": 503,
+    "min_samples_split": 3,
+    "min_samples_leaf": 4
   }
 }
