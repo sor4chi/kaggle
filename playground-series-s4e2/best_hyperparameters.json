@@ -41,5 +41,21 @@
     "n_estimators": 503,
     "min_samples_split": 3,
     "min_samples_leaf": 4
+  },
+  "MLP": {
+    "hidden_layer_sizes": [
+      33,
+      25,
+      49,
+      91
+    ],
+    "activation": "relu",
+    "solver": "lbfgs",
+    "alpha": 0.0019832137172040264,
+    "batch_size": 32,
+    "learning_rate": "adaptive",
+    "learning_rate_init": 0.03712239979543036,
+    "max_iter": 282,
+    "shuffle": false
   }
 }

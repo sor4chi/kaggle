@@ -9,6 +9,7 @@ from models.lightgbm_classifier import model as LGBM
 from models.xgboost_classifier import model as XGB
 from models.catboost_classifier import model as CatBoost
 from models.random_forest_classifier import model as RandomForest
+from models.nn_classifier import model as MLP
 from processor import preprocess, inverse_map_labels
 import os
 import json
@@ -43,6 +44,10 @@ def main():
     # best_params_randomforest = RandomForest.optimize(X, y, 20)
     best_params_randomforest = best_params['RandomForest']
 
+    # Hyperparameter optimization for MLP
+    # best_params_mlp = MLP.optimize(X, y)
+    best_params_mlp = best_params['MLP']
+
     # Create LGBM Model
     config_lgbm = LGBM.Config(**best_params_lgbm)
     model_lgbm = LGBM.Model(config_lgbm)
@@ -59,6 +64,11 @@ def main():
     config_randomforest = RandomForest.Config(**best_params_randomforest)
     model_randomforest = RandomForest.Model(config_randomforest)
 
+    # Create MLP Model
+    config_mlp = MLP.Config(**best_params_mlp)
+    model_mlp = MLP.Model(config_mlp)
+    model_mlp.config.hidden_layer_sizes = tuple(model_mlp.config.hidden_layer_sizes)
+
     # Train LGBM
     model_lgbm.fit(X, y)
 
@@ -71,13 +81,17 @@ def main():
     # Train RandomForest
     model_randomforest.fit(X, y)
 
+    # Train MLP
+    model_mlp.fit(X, y)
+
     # write to file
     with open('best_hyperparameters.json', 'w') as f:
         pretty = json.dumps({
             'LGBM': best_params_lgbm,
             'XGB': best_params_xgb,
             'CatBoost': best_params_catboost,
-            'RandomForest': best_params_randomforest
+            'RandomForest': best_params_randomforest,
+            'MLP': best_params_mlp
         }, indent=2)
         f.write(pretty)
 
@@ -93,6 +107,9 @@ def main():
     # Predict with RandomForest
     y_pred_randomforest = model_randomforest.predict(test)
 
+    # Predict with MLP
+    y_pred_mlp = model_mlp.predict(test)
+
     # Inverse map labels for LGBM
     y_pred_lgbm = inverse_map_labels(pd.DataFrame({const.TARGET_COL: y_pred_lgbm}))[const.TARGET_COL]
 
@@ -105,12 +122,16 @@ def main():
     # Inverse map labels for RandomForest
     y_pred_randomforest = inverse_map_labels(pd.DataFrame({const.TARGET_COL: y_pred_randomforest}))[const.TARGET_COL]
 
+    # Inverse map labels for MLP
+    y_pred_mlp = inverse_map_labels(pd.DataFrame({const.TARGET_COL: y_pred_mlp}))[const.TARGET_COL]
+
     # Ensemble predictions
     ensemble_predictions = [
         y_pred_lgbm,
         y_pred_xgb,
         y_pred_catboost,
         # y_pred_randomforest
+        y_pred_mlp
     ]
     assert len(ensemble_predictions) >= 1
     final_predictions = []
