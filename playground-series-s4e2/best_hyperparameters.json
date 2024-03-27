@@ -1,0 +1,61 @@
+{
+  "LGBM": {
+    "n_estimators": 92,
+    "max_depth": 7,
+    "lambda_l1": 0.14321079102516202,
+    "lambda_l2": 9.201314890531428,
+    "learning_rate": 0.2017281495659929,
+    "num_leaves": 224,
+    "feature_fraction": 0.5228749939913919,
+    "bagging_fraction": 0.8435511400986797,
+    "bagging_freq": 2,
+    "min_child_samples": 56
+  },
+  "XGB": {
+    "n_estimators": 119,
+    "max_depth": 5,
+    "learning_rate": 0.27454348150443364,
+    "gamma": 0.4159076948189399,
+    "min_child_weight": 7,
+    "subsample": 0.9555300981474788,
+    "colsample_bytree": 0.6124463764074969,
+    "reg_alpha": 2.432843354767549,
+    "reg_lambda": 3.241037340089369
+  },
+  "CatBoost": {
+    "iterations": 801,
+    "learning_rate": 0.07942308617190758,
+    "depth": 4,
+    "l2_leaf_reg": 0.0138601973020776,
+    "bootstrap_type": "Bayesian",
+    "random_strength": 8.753958274979151e-08,
+    "bagging_temperature": 0.4088205256892874,
+    "od_type": "Iter",
+    "od_wait": 45
+  },
+  "RandomForest": {
+    "bootstrap": true,
+    "max_depth": 43,
+    "max_features": 0.40275466124121706,
+    "max_leaf_nodes": 648,
+    "n_estimators": 503,
+    "min_samples_split": 3,
+    "min_samples_leaf": 4
+  },
+  "MLP": {
+    "hidden_layer_sizes": [
+      33,
+      25,
+      49,
+      91
+    ],
+    "activation": "relu",
+    "solver": "lbfgs",
+    "alpha": 0.0019832137172040264,
+    "batch_size": 32,
+    "learning_rate": "adaptive",
+    "learning_rate_init": 0.03712239979543036,
+    "max_iter": 282,
+    "shuffle": false
+  }
+}
