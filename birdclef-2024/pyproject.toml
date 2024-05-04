@@ -1,0 +1,40 @@
+[project]
+name = "birdclef-2024"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Sor4chi", email = "80559385+sor4chi@users.noreply.github.com" }
+]
+dependencies = [
+    "ipykernel>=6.29.4",
+    "polars>=0.20.23",
+    "numpy>=1.26.4",
+    "pandas>=2.2.2",
+    "seaborn>=0.13.2",
+    "matplotlib>=3.8.4",
+    "tqdm>=4.66.4",
+    "torchaudio>=2.3.0",
+    "plotly>=5.22.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+"start" = "birdclef_2024:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/birdclef_2024"]
