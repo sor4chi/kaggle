@@ -8,10 +8,28 @@
 #   with-sources: false
 
 -e file:.
+aiohttp==3.9.5
+    # via fsspec
+aiosignal==1.3.1
+    # via aiohttp
+albumentations==1.4.6
+    # via birdclef-2024
+annotated-types==0.6.0
+    # via pydantic
 appnope==0.1.4
     # via ipykernel
 asttokens==2.4.1
     # via stack-data
+attrs==23.2.0
+    # via aiohttp
+audioread==3.0.1
+    # via librosa
+certifi==2024.2.2
+    # via requests
+cffi==1.16.0
+    # via soundfile
+charset-normalizer==3.3.2
+    # via requests
 comm==0.2.2
     # via ipykernel
 contourpy==1.2.1
@@ -22,14 +40,24 @@ debugpy==1.8.1
     # via ipykernel
 decorator==5.1.1
     # via ipython
+    # via librosa
 executing==2.0.1
     # via stack-data
 filelock==3.14.0
     # via torch
 fonttools==4.51.0
     # via matplotlib
+frozenlist==1.4.1
+    # via aiohttp
+    # via aiosignal
 fsspec==2024.3.1
+    # via pytorch-lightning
     # via torch
+idna==3.7
+    # via requests
+    # via yarl
+imageio==2.34.1
+    # via scikit-image
 ipykernel==6.29.4
     # via birdclef-2024
 ipython==8.24.0
@@ -38,6 +66,9 @@ jedi==0.19.1
     # via ipython
 jinja2==3.1.3
     # via torch
+joblib==1.4.2
+    # via librosa
+    # via scikit-learn
 jupyter-client==8.6.1
     # via ipykernel
 jupyter-core==5.7.2
@@ -45,6 +76,16 @@ jupyter-core==5.7.2
     # via jupyter-client
 kiwisolver==1.4.5
     # via matplotlib
+lazy-loader==0.4
+    # via librosa
+    # via scikit-image
+librosa==0.10.2
+    # via birdclef-2024
+lightning-utilities==0.11.2
+    # via pytorch-lightning
+    # via torchmetrics
+llvmlite==0.42.0
+    # via numba
 markupsafe==2.1.5
     # via jinja2
 matplotlib==3.8.4
@@ -55,20 +96,52 @@ matplotlib-inline==0.1.7
     # via ipython
 mpmath==1.3.0
     # via sympy
+msgpack==1.0.8
+    # via librosa
+multidict==6.0.5
+    # via aiohttp
+    # via yarl
 nest-asyncio==1.6.0
     # via ipykernel
 networkx==3.3
+    # via scikit-image
     # via torch
+numba==0.59.1
+    # via librosa
 numpy==1.26.4
+    # via albumentations
     # via birdclef-2024
     # via contourpy
+    # via imageio
+    # via librosa
     # via matplotlib
+    # via numba
+    # via opencv-python
+    # via opencv-python-headless
     # via pandas
+    # via pytorch-lightning
+    # via scikit-image
+    # via scikit-learn
+    # via scipy
     # via seaborn
+    # via soxr
+    # via tifffile
+    # via torchmetrics
+    # via torchvision
+opencv-python==4.9.0.80
+    # via birdclef-2024
+opencv-python-headless==4.9.0.80
+    # via albumentations
 packaging==24.0
     # via ipykernel
+    # via lazy-loader
+    # via lightning-utilities
     # via matplotlib
     # via plotly
+    # via pooch
+    # via pytorch-lightning
+    # via scikit-image
+    # via torchmetrics
 pandas==2.2.2
     # via birdclef-2024
     # via seaborn
@@ -77,13 +150,19 @@ parso==0.8.4
 pexpect==4.9.0
     # via ipython
 pillow==10.3.0
+    # via imageio
     # via matplotlib
+    # via scikit-image
+    # via torchvision
 platformdirs==4.2.1
     # via jupyter-core
+    # via pooch
 plotly==5.22.0
     # via birdclef-2024
 polars==0.20.23
     # via birdclef-2024
+pooch==1.8.1
+    # via librosa
 prompt-toolkit==3.0.43
     # via ipython
 psutil==5.9.8
@@ -92,6 +171,12 @@ ptyprocess==0.7.0
     # via pexpect
 pure-eval==0.2.2
     # via stack-data
+pycparser==2.22
+    # via cffi
+pydantic==2.7.1
+    # via albumentations
+pydantic-core==2.18.2
+    # via pydantic
 pygments==2.18.0
     # via ipython
 pyparsing==3.1.2
@@ -100,31 +185,64 @@ python-dateutil==2.9.0.post0
     # via jupyter-client
     # via matplotlib
     # via pandas
+pytorch-lightning==2.2.4
+    # via birdclef-2024
 pytz==2024.1
     # via pandas
+pyyaml==6.0.1
+    # via albumentations
+    # via pytorch-lightning
 pyzmq==26.0.3
     # via ipykernel
     # via jupyter-client
+requests==2.31.0
+    # via pooch
+scikit-image==0.23.2
+    # via albumentations
+scikit-learn==1.4.2
+    # via albumentations
+    # via librosa
+scipy==1.13.0
+    # via albumentations
+    # via librosa
+    # via scikit-image
+    # via scikit-learn
 seaborn==0.13.2
     # via birdclef-2024
 six==1.16.0
     # via asttokens
     # via python-dateutil
+soundfile==0.12.1
+    # via librosa
+soxr==0.3.7
+    # via librosa
 stack-data==0.6.3
     # via ipython
 sympy==1.12
     # via torch
 tenacity==8.2.3
     # via plotly
+threadpoolctl==3.5.0
+    # via scikit-learn
+tifffile==2024.5.3
+    # via scikit-image
 torch==2.3.0
+    # via pytorch-lightning
     # via torchaudio
+    # via torchmetrics
+    # via torchvision
 torchaudio==2.3.0
+    # via birdclef-2024
+torchmetrics==1.3.2
+    # via pytorch-lightning
+torchvision==0.18.0
     # via birdclef-2024
 tornado==6.4
     # via ipykernel
     # via jupyter-client
 tqdm==4.66.4
     # via birdclef-2024
+    # via pytorch-lightning
 traitlets==5.14.3
     # via comm
     # via ipykernel
@@ -133,8 +251,21 @@ traitlets==5.14.3
     # via jupyter-core
     # via matplotlib-inline
 typing-extensions==4.11.0
+    # via albumentations
+    # via librosa
+    # via lightning-utilities
+    # via pydantic
+    # via pydantic-core
+    # via pytorch-lightning
     # via torch
 tzdata==2024.1
     # via pandas
+urllib3==2.2.1
+    # via requests
 wcwidth==0.2.13
     # via prompt-toolkit
+yarl==1.9.4
+    # via aiohttp
+setuptools==69.5.1
+    # via birdclef-2024
+    # via lightning-utilities
